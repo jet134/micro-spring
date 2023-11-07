@@ -9,6 +9,8 @@ import java.util.UUID;
  * @Created: 5/11/2023
  */
 public interface CustomerService {
-    Customer getCustomer();
+    Customer saveCustomer(Customer customer);
     Customer getCustomerWithId(UUID id);
+
+    void updateCustomer(UUID id, Customer customer);
 }

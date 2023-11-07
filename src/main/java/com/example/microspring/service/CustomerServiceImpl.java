@@ -12,17 +12,23 @@ import java.util.UUID;
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Override
-    public Customer getCustomer() {
-        return Customer.builder()
-                .id(UUID.randomUUID())
-                .name("Jet")
-                .build();
-    }
-    @Override
     public Customer getCustomerWithId(UUID id) {
         return Customer.builder()
                 .id(id)
                 .name("Jet with id")
                 .build();
+    }
+    @Override
+    public Customer saveCustomer(Customer customer) {
+//        return Customer.builder()
+//                .id(UUID.randomUUID())
+//                .name("Jet")
+//                .build();
+        return customer;
+    }
+
+    @Override
+    public void updateCustomer(UUID id, Customer customer) {
+        customer.setId(id);
     }
 }
