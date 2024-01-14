@@ -29,7 +29,7 @@ public class CustomerController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity saveCustomer(Customer customer) {
+    public ResponseEntity<Object> saveCustomer(Customer customer) {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Endpoint", "api/customer");
         headers.add("Location", customerService.saveCustomer(customer).getId().toString());
@@ -37,8 +37,20 @@ public class CustomerController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity updateCustomer(@PathVariable("id") UUID id, Customer customer) {
+    public ResponseEntity<Object> updateCustomer(@PathVariable("id") UUID id, Customer customer) {
         customerService.updateCustomer(id, customer);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+//    @DeleteMapping("{id}")
+//    public ResponseEntity<Object> deleteCustomerById(@PathVariable("id") UUID id) {
+//        Customer customer = customerService.deleteCustomerById(id);
+//        return customer == null ? new ResponseEntity<>(HttpStatus.NOT_FOUND) : new ResponseEntity<>(customer, HttpStatus.OK);
+//    }
+
+    @DeleteMapping("{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteCustomerById(@PathVariable("id") UUID id) {
+        customerService.deleteCustomerById(id);
     }
 }

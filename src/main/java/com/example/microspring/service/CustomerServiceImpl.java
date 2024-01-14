@@ -31,4 +31,13 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateCustomer(UUID id, Customer customer) {
         customer.setId(id);
     }
+
+    @Override
+    public Customer deleteCustomerById(UUID id) {
+        UUID uuid = UUID.fromString("9fe93008-bc0f-4fef-85e1-549cd179a107");
+        return uuid.equals(id) ? Customer.builder()
+                .id(id)
+                .name("Jet with id")
+                .build() : null;
+    }
 }

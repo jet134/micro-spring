@@ -2,6 +2,7 @@ package com.example.microspring.service;
 
 import com.example.microspring.dto.Customer;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -13,4 +14,6 @@ public interface CustomerService {
     Customer getCustomerWithId(UUID id);
 
     void updateCustomer(UUID id, Customer customer);
+
+    Customer deleteCustomerById(UUID id);
 }

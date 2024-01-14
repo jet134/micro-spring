@@ -22,6 +22,15 @@ repositories {
 }
 
 dependencies {
+//    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:3.0.1'
+//    implementation 'com.sun.xml.bind:jaxb-xjc:3.0.1'
+//    runtimeOnly 'com.sun.xml.bind:jaxb-impl:3.0.1'
+//    runtimeOnly 'org.glassfish.jaxb:jaxb-runtime:3.0.1'
+    implementation('com.sun.xml.bind:jaxb-ri:3.0.2') {
+        exclude group: 'com.sun.xml.bind', module: 'jaxb-release-documentation'
+        exclude group: 'com.sun.xml.bind', module: 'jaxb-samples'
+    }
+
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
